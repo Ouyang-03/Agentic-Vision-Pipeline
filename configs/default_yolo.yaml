@@ -1,1 +1,19 @@
+# YOLOv11 + ByteTrack Base Configuration for Sprinkler Trucks
+model:
+  weights: "weights/yolov11n-custom.pt"
+  classes: 
+    - pedestrian
+    - non_motor_vehicle
+    - traffic_cone
+    - water_mist_occlusion  # 故意写一个长尾特定类别
 
+tracker:
+  type: "bytetrack"
+  track_thresh: 0.5
+  track_buffer: 30
+  match_thresh: 0.8
+
+agent_settings:
+  max_iterations: 5
+  auto_relabel: True
+  llm_backend: "claude-3-5-sonnet"
